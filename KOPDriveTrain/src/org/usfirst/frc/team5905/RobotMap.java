@@ -38,7 +38,7 @@ public class RobotMap {
     public static SpeedController driveTrainSpeedController2;
     public static SpeedController driveTrainSpeedController3;
     public static SpeedController driveTrainSpeedController4;
-    public static RobotDrive driveTrainRobotDrive21;    
+    public static RobotDrive driveTrain41;    
     public static ADXRS450_Gyro driveTrainGyro;
     
 
@@ -56,12 +56,12 @@ public class RobotMap {
         driveTrainSpeedController4 = new Victor(3);
         LiveWindow.addActuator("DriveTrain", "BACK_LEFT_SIDE_SPEED_CONTROLLER", (Victor) driveTrainSpeedController4);
         
-        driveTrainRobotDrive21 = new RobotDrive(driveTrainSpeedController1, driveTrainSpeedController2, driveTrainSpeedController3, driveTrainSpeedController4);
+        driveTrain41 = new RobotDrive(driveTrainSpeedController1,  driveTrainSpeedController3, driveTrainSpeedController2, driveTrainSpeedController4);
         
-        driveTrainRobotDrive21.setSafetyEnabled(true);
-        driveTrainRobotDrive21.setExpiration(0.1);
-        driveTrainRobotDrive21.setSensitivity(0.5);
-        driveTrainRobotDrive21.setMaxOutput(1);
+        driveTrain41.setSafetyEnabled(true);
+        driveTrain41.setExpiration(0.1);
+        driveTrain41.setSensitivity(0.5);
+        driveTrain41.setMaxOutput(1);
 
        
 

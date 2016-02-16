@@ -42,7 +42,7 @@ public class DriveTrain extends Subsystem {
 	private final SpeedController speedController2 = RobotMap.driveTrainSpeedController2;
 	private final SpeedController speedController3 = RobotMap.driveTrainSpeedController3;
 	private final SpeedController speedController4 = RobotMap.driveTrainSpeedController4;
-	private final RobotDrive robotDrive41 = RobotMap.driveTrainRobotDrive21;
+	private final RobotDrive robotDrive41 = RobotMap.driveTrain41;
 	private final ADXRS450_Gyro gyro = RobotMap.driveTrainGyro;
 	
 	private final double LeftForwardCalibration = 1;
