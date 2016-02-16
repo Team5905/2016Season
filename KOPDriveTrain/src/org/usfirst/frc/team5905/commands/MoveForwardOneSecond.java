@@ -42,7 +42,7 @@ public class MoveForwardOneSecond extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.driveBoth(AutonomousCalibrationCommands.MOVE_POWER);
+    	Robot.driveTrain.driveBoth(0.5);
     }
     
 
