@@ -11,7 +11,7 @@ public class GoStraightPowerTime extends Command {
 	
 	double power; 
 
-    public GoStraightPowerTime(double time, double power) {
+    public GoStraightPowerTime(double power, double time) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.driveTrain);
@@ -31,7 +31,7 @@ public class GoStraightPowerTime extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return isTimedOut();
     }
 
     // Called once after isFinished returns true

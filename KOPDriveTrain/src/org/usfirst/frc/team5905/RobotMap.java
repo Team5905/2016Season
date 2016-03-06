@@ -40,6 +40,8 @@ public class RobotMap {
     public static SpeedController BACK_RIGHT_SPEED_CONTROLLER;
     public static SpeedController FRONT_LEFT_SPEED_CONTROLLER;
     public static SpeedController BACK_LEFT_SPEED_CONTROLLER;
+    public static SpeedController ARM_SPEED_CONTROLLER;
+    
     public static RobotDrive driveTrain41;    
     public static ADXRS450_Gyro driveTrainGyro;
 	public static ADXL362 driveTrainAccel;
@@ -58,6 +60,8 @@ public class RobotMap {
         BACK_LEFT_SPEED_CONTROLLER = new Victor(0);
         LiveWindow.addActuator("DriveTrain", "BACK_LEFT_SIDE_SPEED_CONTROLLER", (Victor) BACK_LEFT_SPEED_CONTROLLER);
         
+        ARM_SPEED_CONTROLLER = new Victor(4);
+        LiveWindow.addActuator("Arm", "ARM_SPEED_CONTROLLER", (Victor) ARM_SPEED_CONTROLLER);
                 
         driveTrain41 = new RobotDrive(FRONT_LEFT_SPEED_CONTROLLER, BACK_LEFT_SPEED_CONTROLLER, FRONT_RIGHT_SPEED_CONTROLLER,  BACK_RIGHT_SPEED_CONTROLLER);     
         

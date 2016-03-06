@@ -12,8 +12,9 @@
 package org.usfirst.frc.team5905.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import org.usfirst.frc.team5905.Robot;
-import org.usfirst.frc.team5905.subsystems.DriveTrain;
 
 /**
  *
@@ -46,6 +47,8 @@ public class MoveWithJoysticks extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.driveTrain.moveWithJoysticks();
+        SmartDashboard.putNumber("Thing", Robot.oi.gamepad.getRawAxis(2));
+
     }
 
     // Make this return true when this Command no longer needs to run execute()

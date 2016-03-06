@@ -104,8 +104,20 @@ public class PIDDriveTrain extends PIDSubsystem {
 		
 		return multiplier * (Math.abs(angle) % 360);
 	}
+	
+	private void smoothDrive(double left, double right){
+		smoothDriveDirection(left, right, 0);
+	}
+	
+	private void smoothDriveForward(double left, double right){
+		smoothDriveDirection(left, right, 1);
+	}
+	
+	private void smoothDriveBackward(double left, double right){
+		smoothDriveDirection(left, right, -1);
+	}
 
-	private void smoothDrive(double left, double right) {
+	private void smoothDriveDirection(double left, double right, int direction) {
 		oldLeftSpeed = RobotMath.ease(left * LeftForwardCalibration, oldLeftSpeed);
 		oldRightSpeed = RobotMath.ease(right * RightForwardCalibration, oldRightSpeed);
 				
@@ -140,11 +152,11 @@ public class PIDDriveTrain extends PIDSubsystem {
 				right = compensationFactor * oldRightSpeed;
 			else 
 				left = compensationFactor * oldLeftSpeed;
-
 			
-			
-
-			
+			if (direction != 0){
+				right *= direction;
+				left *= direction;
+			}
 		}
 		
 		SmartDashboard.putNumber("leftMotor", left);

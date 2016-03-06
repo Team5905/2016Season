@@ -35,6 +35,7 @@ public class Robot extends IterativeRobot {
 
     public static OI oi;
     public static PIDDriveTrain driveTrain;
+    public static Arm arm;
 	CameraServer server;
 
 
@@ -45,6 +46,7 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
     	RobotMap.init();
         driveTrain = new PIDDriveTrain();
+        arm = new Arm();
         
         server = CameraServer.getInstance();
         server.setQuality(50);
