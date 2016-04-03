@@ -67,16 +67,8 @@ public class OI {
         L1Button.whileHeld(new ArmUp());
         L1Button.whenReleased(new ArmStop());
         
-        R1Button.whileHeld(new ArmDown());
-        R1Button.whenReleased(new ArmStop());
-        
-       
-        
-        
-        
-        
-        
-      
+        R1Button.whileHeld(new SpinOutward());
+        R1Button.whenReleased(new SpinInward());
     }
 
    

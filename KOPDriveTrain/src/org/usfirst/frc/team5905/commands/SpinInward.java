@@ -8,20 +8,22 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ArmDown extends Command {
+public class SpinInward extends Command {
 
-    public ArmDown() {
-        requires(Robot.arm);
+    public SpinInward() {
+        // Use requires() here to declare subsystem dependencies
+    	requires(Robot.intake);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.intake.stopSpin();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (Robot.oi.gamepad.getRawAxis(RobotMap.LEFT_GAMEPAD_TRIGGER) > 0.5) 
-    		Robot.arm.moveArmDown();
+    	if (Robot.oi.gamepad.getRawAxis(RobotMap.RIGHT_GAMEPAD_TRIGGER) > 0.5)
+    		Robot.intake.spinInward();
     }
 
     // Make this return true when this Command no longer needs to run execute()

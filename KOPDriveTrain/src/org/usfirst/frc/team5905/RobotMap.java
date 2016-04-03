@@ -32,15 +32,22 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class RobotMap {
 	public static final double EASE_INCREMENT = 0.05;
 
-	public static final int RIGHT_GAMEPAD_JOYSTICK = 5;
+	public static final int RIGHT_GAMEPAD_JOYSTICK_Y = 5;
+	public static final int LEFT_GAMEPAD_JOYSTICK_Y = 1;
+	public static final int LEFT_GAMEPAD_TRIGGER = 2;
+	public static final int RIGHT_GAMEPAD_TRIGGER = 3;
+	
+	public static final double INTAKE_SPEED = 0.3;
 
-	public static final int LEFT_GAMEPAD_JOYSTICK = 1;
-
+	
 	public static SpeedController FRONT_RIGHT_SPEED_CONTROLLER;
     public static SpeedController BACK_RIGHT_SPEED_CONTROLLER;
     public static SpeedController FRONT_LEFT_SPEED_CONTROLLER;
     public static SpeedController BACK_LEFT_SPEED_CONTROLLER;
     public static SpeedController ARM_SPEED_CONTROLLER;
+    public static SpeedController ARM_RIGHT_SPEED_CONTROLLER;
+    public static SpeedController ARM_LEFT_SPEED_CONTROLLER;
+
     
     public static RobotDrive driveTrain41;    
     public static ADXRS450_Gyro driveTrainGyro;
@@ -48,16 +55,25 @@ public class RobotMap {
     
 
     public static void init() {
+    	
+    	ARM_LEFT_SPEED_CONTROLLER = new Victor(1);
+    	
+    	ARM_RIGHT_SPEED_CONTROLLER = new Victor(0);
+   
         FRONT_RIGHT_SPEED_CONTROLLER = new Victor(3);
         LiveWindow.addActuator("DriveTrain", "FRONT_RIGHT_SIDE_SPEED_CONTROLLER", (Victor) FRONT_RIGHT_SPEED_CONTROLLER);
         
-        BACK_RIGHT_SPEED_CONTROLLER = new Victor(1);
+        //CHANGE THIS
+        
+        BACK_RIGHT_SPEED_CONTROLLER = new Victor(7);
         LiveWindow.addActuator("DriveTrain", "BACK_RIGHT_SIDE_SPEED_CONTROLLER", (Victor) BACK_RIGHT_SPEED_CONTROLLER);
         
         FRONT_LEFT_SPEED_CONTROLLER = new Victor(2);
         LiveWindow.addActuator("DriveTrain", "FRONT_LEFT_SIDE_SPEED_CONTROLLER", (Victor) FRONT_LEFT_SPEED_CONTROLLER);
         
-        BACK_LEFT_SPEED_CONTROLLER = new Victor(0);
+        //CHANGE THIS
+        
+        BACK_LEFT_SPEED_CONTROLLER = new Victor(6);
         LiveWindow.addActuator("DriveTrain", "BACK_LEFT_SIDE_SPEED_CONTROLLER", (Victor) BACK_LEFT_SPEED_CONTROLLER);
         
         ARM_SPEED_CONTROLLER = new Victor(4);

@@ -217,8 +217,8 @@ public class PIDDriveTrain extends PIDSubsystem {
 	
 
 	public void moveWithJoysticks() {
-		double rawLeftAxis = -1 * Robot.oi.gamepad.getRawAxis(RobotMap.LEFT_GAMEPAD_JOYSTICK);
-		double rawRightAxis = -1 * Robot.oi.gamepad.getRawAxis(RobotMap.RIGHT_GAMEPAD_JOYSTICK);
+		double rawLeftAxis = -1 * Robot.oi.gamepad.getRawAxis(RobotMap.LEFT_GAMEPAD_JOYSTICK_Y);
+		double rawRightAxis = -1 * Robot.oi.gamepad.getRawAxis(RobotMap.RIGHT_GAMEPAD_JOYSTICK_Y);
 //		if (rawLeftAxis == 0 && rawRightAxis == 0) stop();
 //		else {
 //			driveCalibratedSquared(rawLeftAxis, rawRightAxis);
