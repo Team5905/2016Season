@@ -25,6 +25,10 @@ public class Arm extends Subsystem {
 		moveArm(1);
 	}
 	
+	public void stopArm() {
+		moveArm(0);
+	}
+	
 	public void moveArm(int direction){
 		if (direction != 0)
 			arm.set(0.5 * direction);

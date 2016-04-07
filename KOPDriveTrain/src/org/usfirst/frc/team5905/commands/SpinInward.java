@@ -24,6 +24,8 @@ public class SpinInward extends Command {
     protected void execute() {
     	if (Robot.oi.gamepad.getRawAxis(RobotMap.RIGHT_GAMEPAD_TRIGGER) > 0.5)
     		Robot.intake.spinInward();
+    	else
+    		Robot.intake.stopSpin();
     }
 
     // Make this return true when this Command no longer needs to run execute()

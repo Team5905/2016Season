@@ -22,6 +22,9 @@ public class ArmDown extends Command {
     protected void execute() {
     	if (Robot.oi.gamepad.getRawAxis(RobotMap.LEFT_GAMEPAD_TRIGGER) > 0.5) 
     		Robot.arm.moveArmDown();
+    	else {
+			Robot.arm.stopArm();
+		}
     }
 
     // Make this return true when this Command no longer needs to run execute()

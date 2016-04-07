@@ -4,6 +4,7 @@ import org.usfirst.frc.team5905.Robot;
 import org.usfirst.frc.team5905.RobotMap;
 import org.usfirst.frc.team5905.commands.*;
 
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -19,21 +20,21 @@ public class Intake extends Subsystem {
         setDefaultCommand(new SpinInward());
     }
     
-    public void spin(int direction) {
-		RobotMap.ARM_LEFT_SPEED_CONTROLLER.set(RobotMap.INTAKE_SPEED * direction);
-		RobotMap.ARM_RIGHT_SPEED_CONTROLLER.set(-1 * RobotMap.INTAKE_SPEED * direction);
+    public void spin(int direction, double speed) {
+		RobotMap.ARM_LEFT_SPEED_CONTROLLER.set(speed * direction);
+		RobotMap.ARM_RIGHT_SPEED_CONTROLLER.set(-1 * speed * direction);
 	}
 
 	public void spinInward() {
-		spin(1);	
+		spin(1, RobotMap.INTAKE_SPEED);	
 	}
 	
 	public void spinOutward() {
-		spin(-1);
+		spin(-1, RobotMap.OUTTAKE_SPEED);
 	}
 	
 	public void stopSpin() {
-		spin(0);
+		spin(0, 0);
 	}
 }
 

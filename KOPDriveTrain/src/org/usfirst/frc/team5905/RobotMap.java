@@ -38,6 +38,8 @@ public class RobotMap {
 	public static final int RIGHT_GAMEPAD_TRIGGER = 3;
 	
 	public static final double INTAKE_SPEED = 0.3;
+	public static final double OUTTAKE_SPEED = 1;
+
 
 	
 	public static SpeedController FRONT_RIGHT_SPEED_CONTROLLER;
