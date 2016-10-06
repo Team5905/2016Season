@@ -18,11 +18,11 @@ public class Arm extends Subsystem {
     }
 
 	public void moveArmUp() {
-		moveArm(-1);
+		moveArm(1);
 	}
 	
 	public void moveArmDown() {
-		moveArm(1);
+		moveArm(-1);
 	}
 	
 	public void stopArm() {
@@ -31,9 +31,9 @@ public class Arm extends Subsystem {
 	
 	public void moveArm(int direction){
 		if (direction != 0)
-			arm.set(0.5 * direction);
+			arm.set(0.6 * direction);
 		else 
-			arm.set(0.03);
+			arm.set(0.15);
 	}
     
     

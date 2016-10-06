@@ -12,7 +12,7 @@
 package org.usfirst.frc.team5905;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
-import edu.wpi.first.wpilibj.CameraServer;
+//import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -37,7 +37,7 @@ public class Robot extends IterativeRobot {
     public static PIDDriveTrain driveTrain;
     public static Arm arm;
     public static Intake intake;
-	CameraServer server;
+//	CameraServer server;
 
 
     /**
@@ -50,10 +50,12 @@ public class Robot extends IterativeRobot {
         arm = new Arm();
         intake = new Intake();
         
-        server = CameraServer.getInstance();
-        server.setQuality(50);
-        //the camera name (ex "cam0") can be found through the roborio web interface
-        server.startAutomaticCapture("cam0");
+//        server = CameraServer.getInstance();
+//        server.setQuality(50);
+//        //the camera name (ex "cam0") can be found through the roborio web interface
+//        server.startAutomaticCapture("cam0");
+//        
+        autonomousCommand = new AutonomousCommands();
         
 
         // OI must be constructed after subsystems. If the OI creates Commands

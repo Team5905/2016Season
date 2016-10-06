@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class ArmStop extends Command {
-
+	
     public ArmStop() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);

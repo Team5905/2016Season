@@ -1,47 +1,43 @@
 package org.usfirst.frc.team5905.commands;
 
 import org.usfirst.frc.team5905.Robot;
-import org.usfirst.frc.team5905.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.interfaces.Accelerometer;
+import edu.wpi.first.wpilibj.command.PIDSubsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class GoStraightPowerTime extends Command {
-	
-	double power; 
+public class TurnAround extends Command {
 
-    public GoStraightPowerTime(double power, double time) {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	requires(Robot.driveTrain);
-    	setTimeout(time);
-    	this.power = power;
+    public TurnAround() {
+        requires(Robot.driveTrain);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.driveTrain.prepareToGoStraight();
+    	Robot.driveTrain.turnGiven(180);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    		Robot.driveTrain.goStraight(power);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return isTimedOut();
+    	
+    	return (Robot.driveTrain.getCurrentGyroAngle() < 180.2 && Robot.driveTrain.getCurrentGyroAngle() > 180.8);
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.driveTrain.disable();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	Robot.driveTrain.disable();
     }
 }

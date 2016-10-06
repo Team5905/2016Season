@@ -31,6 +31,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class RobotMap {
 	public static final double EASE_INCREMENT = 0.05;
+	
+	//MAX SPEED OF JUST DRIVETRAIN
+	public static final double robotSpeed = 1;
 
 	public static final int RIGHT_GAMEPAD_JOYSTICK_Y = 5;
 	public static final int LEFT_GAMEPAD_JOYSTICK_Y = 1;
@@ -58,24 +61,20 @@ public class RobotMap {
 
     public static void init() {
     	
-    	ARM_LEFT_SPEED_CONTROLLER = new Victor(1);
+    	ARM_LEFT_SPEED_CONTROLLER = new Victor(5);
     	
-    	ARM_RIGHT_SPEED_CONTROLLER = new Victor(0);
+    	ARM_RIGHT_SPEED_CONTROLLER = new Victor(6);
    
         FRONT_RIGHT_SPEED_CONTROLLER = new Victor(3);
         LiveWindow.addActuator("DriveTrain", "FRONT_RIGHT_SIDE_SPEED_CONTROLLER", (Victor) FRONT_RIGHT_SPEED_CONTROLLER);
-        
-        //CHANGE THIS
-        
-        BACK_RIGHT_SPEED_CONTROLLER = new Victor(7);
+       
+        BACK_RIGHT_SPEED_CONTROLLER = new Victor(1);
         LiveWindow.addActuator("DriveTrain", "BACK_RIGHT_SIDE_SPEED_CONTROLLER", (Victor) BACK_RIGHT_SPEED_CONTROLLER);
         
         FRONT_LEFT_SPEED_CONTROLLER = new Victor(2);
         LiveWindow.addActuator("DriveTrain", "FRONT_LEFT_SIDE_SPEED_CONTROLLER", (Victor) FRONT_LEFT_SPEED_CONTROLLER);
-        
-        //CHANGE THIS
-        
-        BACK_LEFT_SPEED_CONTROLLER = new Victor(6);
+                
+        BACK_LEFT_SPEED_CONTROLLER = new Victor(0);
         LiveWindow.addActuator("DriveTrain", "BACK_LEFT_SIDE_SPEED_CONTROLLER", (Victor) BACK_LEFT_SPEED_CONTROLLER);
         
         ARM_SPEED_CONTROLLER = new Victor(4);
@@ -86,7 +85,9 @@ public class RobotMap {
         driveTrain41.setSafetyEnabled(true);
         driveTrain41.setExpiration(0.1);
         driveTrain41.setSensitivity(0.5);
-        driveTrain41.setMaxOutput(.6);
+        
+        //MAX OUTPUT OF ENTIRE ROBOT
+        driveTrain41.setMaxOutput(0.3);
          
         driveTrainGyro = new ADXRS450_Gyro();
         driveTrainAccel = new ADXL362(Accelerometer.Range.k2G);

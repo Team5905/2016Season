@@ -1,39 +1,34 @@
 package org.usfirst.frc.team5905.commands;
 
+import javax.swing.RootPaneContainer;
+
 import org.usfirst.frc.team5905.Robot;
-import org.usfirst.frc.team5905.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.interfaces.Accelerometer;
 
 /**
  *
  */
-public class GoStraightPowerTime extends Command {
-	
-	double power; 
+public class StopDriveTrain extends Command {
 
-    public GoStraightPowerTime(double power, double time) {
+    public StopDriveTrain() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.driveTrain);
-    	setTimeout(time);
-    	this.power = power;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.driveTrain.prepareToGoStraight();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    		Robot.driveTrain.goStraight(power);
+    	Robot.driveTrain.stop();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return isTimedOut();
+        return false;
     }
 
     // Called once after isFinished returns true

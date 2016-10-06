@@ -47,7 +47,7 @@ public class PIDDriveTrain extends PIDSubsystem {
 	private double targetTime = 0;
 	
 	private enum DriveTrainMode {
-		MANUAL, DRIVE_STRAIGHT, ROTATE
+		MANUAL, DRIVE_STRAIGHT, ROTATE, DRIVE_BACKWARDS
 	}
 	
 	private Timer timer;
@@ -92,7 +92,7 @@ public class PIDDriveTrain extends PIDSubsystem {
 	public void stop() {
 		oldLeftSpeed = 0;
 		oldRightSpeed = 0;
-		robotDrive41.stopMotor();
+		driveCalibrated(0.001, 0.001);
 	}
 	
 	private double getCorrectedAngle() {
@@ -138,33 +138,36 @@ public class PIDDriveTrain extends PIDSubsystem {
 			double compensationFactor = 1;
 			
 			//Does not allow correction for more than MAX_ANGLE_ERROR_EXPECTED
+			
 			if (gyroAngleAbsolute > MAX_ANGLE_ERROR_EXPECTED){
 				gyroAngleAbsolute = MAX_ANGLE_ERROR_EXPECTED;
 			}
 			
-			//Find an absolute compensation for the motor proportionate to the maximum angle
+			//Find an absolute compensation for the motor proportional to the maximum angle
+			
 			if (gyroAngleAbsolute > ANGLE_ERROR_TOLERANCE) {
 				compensationFactor = 1 - (gyroAngleAbsolute * MAX_DELTA_OF_SIDE / MAX_ANGLE_ERROR_EXPECTED);
 			}
 			
-			
-			if (gyroAngle < 0) 
-				right = compensationFactor * oldRightSpeed;
-			else 
-				left = compensationFactor * oldLeftSpeed;
+			else {
+				if (gyroAngle > 0) 
+					right = compensationFactor * oldRightSpeed;
+				else 
+					left = compensationFactor * oldLeftSpeed;
+			}
 			
 			if (direction != 0){
 				right *= direction;
 				left *= direction;
 			}
-		}
+
 		
 		SmartDashboard.putNumber("leftMotor", left);
 		SmartDashboard.putNumber("rightMotor", right);
 		SmartDashboard.putNumber("rawGyroValue", gyro.getAngle());
-		
 		driveCalibrated(left, right);
 	}
+}
 	
 	
 	public double getCurrentGyroAngle(){
@@ -219,13 +222,18 @@ public class PIDDriveTrain extends PIDSubsystem {
 	public void moveWithJoysticks() {
 		double rawLeftAxis = -1 * Robot.oi.gamepad.getRawAxis(RobotMap.LEFT_GAMEPAD_JOYSTICK_Y);
 		double rawRightAxis = -1 * Robot.oi.gamepad.getRawAxis(RobotMap.RIGHT_GAMEPAD_JOYSTICK_Y);
+		
+		double leftPower = rawLeftAxis * RobotMap.robotSpeed;
+		double rightPower = rawRightAxis * RobotMap.robotSpeed;
+		
+		
 //		if (rawLeftAxis == 0 && rawRightAxis == 0) stop();
 //		else {
 //			driveCalibratedSquared(rawLeftAxis, rawRightAxis);
 //		}
 //		
-		driveCalibratedSquared(rawLeftAxis, rawRightAxis);
-		SmartDashboard.putNumber("Accel Val", getAccelForwardDirectionVal());
+		driveCalibratedSquared(leftPower, rightPower);
+//		SmartDashboard.putNumber("Accel Val", getAccelForwardDirectionVal());
 
 	}
 

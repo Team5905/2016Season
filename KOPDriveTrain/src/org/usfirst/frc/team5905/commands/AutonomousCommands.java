@@ -46,7 +46,36 @@ public class AutonomousCommands extends CommandGroup {
     	//addSequential(new GoStraightPowerTime(1, 3));
     	//For Low Bar: .75 power @ .6 max output, 2.75 seconds
     	//addSequential(new GoStraightPowerTime(.75, 2.75));
-    	addSequential(new GoStraightPowerTime(0, 0));
+//    	addSequential(new AutoArmDown(0.5));
+//    	addSequential(goUnderLowbar());
+//    	addSequential(goOverRockWall());
+    	addSequential(goOverRoughTerrain());
+//    	addSequential(goOverRamparts());
+//    	addSequential(goOverMoat());
+//    	addSequential(AutoArmDown());
+//    	addSequential(new AutoOuttake(.5));
+//    	addSequential(new TurnAround());
+    	
  
     } 
+    
+    private GoStraightPowerTime goOverRockWall(){
+    	return (new GoStraightPowerTime(1, 2.75));
+    }
+    
+    private GoStraightPowerTime goOverRoughTerrain() {
+    	return (new GoStraightPowerTime(0.75, 2.75));
+    }
+    
+    private GoStraightPowerTime goOverRamparts(){
+    	return (new GoStraightPowerTime(1, 3.5));
+    }
+    
+    private GoStraightPowerTime goUnderLowbar(){
+    	return (new GoStraightPowerTime(-0.5, 3.5));
+    }
+    
+    private GoStraightPowerTime goOverMoat(){
+    	return (new GoStraightPowerTime(1, 3));
+    }
 }

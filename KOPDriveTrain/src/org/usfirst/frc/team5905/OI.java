@@ -55,7 +55,7 @@ public class OI {
     public Joystick gamepad;
     public JoystickButton R1Button;
     public JoystickButton L1Button;
-    public boolean L2Button;
+    public JoystickButton AButton;
 
 
     public OI() {
@@ -63,12 +63,16 @@ public class OI {
         gamepad = new Joystick(0);
         L1Button = new JoystickButton(gamepad, 5);
         R1Button = new JoystickButton(gamepad, 6);
+        AButton = new JoystickButton(gamepad, 1);
         		
         L1Button.whileHeld(new ArmUp());
-        L1Button.whenReleased(new ArmStop());
+        L1Button.whenReleased(new ArmDown());
         
         R1Button.whileHeld(new SpinOutward());
         R1Button.whenReleased(new SpinInward());
+        
+        AButton.whenPressed(new StopDriveTrain());
+        AButton.whenInactive(new MoveWithJoysticks());
     }
 
    
